@@ -23,6 +23,9 @@ let utcTime = date.getUTCMilliseconds();
 // Assign to respective selectors
 currentDay.textContent = day
 mnthYr.textContent = `${mnth}, ${yr}`;
-timeInMs.textContent = utcTime;
+setInterval(() => {
+  timeInMs.textContent = utcTime;
+  utcTime++;
+}, 1000)
 
 
