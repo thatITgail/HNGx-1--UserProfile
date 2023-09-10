@@ -13,19 +13,23 @@ const currentDay = document.querySelector(
 const mnthYr = document.getElementById("mnth-yr");
 const timeInMs = document.querySelector("[data-testid ='currentUTCTime']");
 
-// Date constructor
-const date = new Date();
-let day = weekDays[date.getDay()];
-let mnth = date.getMonth();
-let yr = date.getFullYear();
-let utcTime = date.getUTCMilliseconds();
 
 // Assign to respective selectors
-currentDay.textContent = day
-mnthYr.textContent = `${mnth}, ${yr}`;
-setInterval(() => {
-  timeInMs.textContent = utcTime;
-  utcTime++;
-}, 1000)
+const updateClock = () => {
+  const date = new Date();
+  const day = weekDays[date.getDay()];
+  const mnth = date.getMonth();
+  const yr = date.getFullYear();
+  currentDay.textContent = day
+  mnthYr.textContent = `${mnth}, ${yr}`;
+
+  const utcHrs = date.getUTCHours();
+  const utcMins = date.getUTCMinutes();
+  const utcSecs = date.getUTCSeconds();
+  const utcTime = `${utcHrs}:${utcMins}:${utcSecs}`;
+  
+  timeInMs.innerHTML = utcTime;
+}
+setInterval(updateClock, 1000)
 
 
