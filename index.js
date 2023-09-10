@@ -10,7 +10,6 @@ const weekDays = [
 // Selectors
 const currentDay = document.querySelector(
   "[data-testid ='currentDayOfTheWeek']")
-const mnthYr = document.getElementById("mnth-yr");
 const timeInMs = document.querySelector("[data-testid ='currentUTCTime']");
 
 
@@ -18,10 +17,8 @@ const timeInMs = document.querySelector("[data-testid ='currentUTCTime']");
 const updateClock = () => {
   const date = new Date();
   const day = weekDays[date.getDay()];
-  const mnth = date.getMonth();
-  const yr = date.getFullYear();
+  
   currentDay.textContent = day
-  mnthYr.textContent = `${mnth}, ${yr}`;
 
   const utcHrs = date.getUTCHours();
   const utcMins = date.getUTCMinutes();
